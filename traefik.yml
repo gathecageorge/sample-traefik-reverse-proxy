@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   traefik:
-    image: traefik:v2.10
+    image: traefik:latest
     command:
       - "--log.level=DEBUG"
       - "--api.insecure=true"
