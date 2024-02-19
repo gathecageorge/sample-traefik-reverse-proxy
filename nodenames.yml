@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  db-postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: Password
+
+  adminer:
+    image: adminer
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.adminer.rule=Host(`adminer.localhost`)"
+      - "traefik.http.routers.adminer.entrypoints=web"
+      - "traefik.http.services.adminer.loadbalancer.server.port=8080"
+    depends_on:
+      - db-postgres
+
+  nodenames:
+    image: gathecageorge/node-names-application:arm
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nodenames.rule=Host(`nodenames.localhost`)"
+      - "traefik.http.routers.nodenames.entrypoints=web"
+      - "traefik.http.services.nodenames.loadbalancer.server.port=5000"
+    deploy:
+      mode: replicated
+      replicas: 2
+    environment:
+      - DATABASE_HOST=db-postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=Password
+      - DATABASE_NAME=nodeNamesApplication
+      - DATABASE_PORT=5432
+      - APPLICATION_PORT=5000
+    depends_on:
+      - db
+
