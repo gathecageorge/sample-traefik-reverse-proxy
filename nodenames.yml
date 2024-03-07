@@ -15,6 +15,7 @@ services:
       - "traefik.http.routers.adminer.rule=Host(`adminer.localhost`)"
       - "traefik.http.routers.adminer.entrypoints=web"
       - "traefik.http.services.adminer.loadbalancer.server.port=8080"
+      - "traefik.http.routers.adminer.service=adminer"
     depends_on:
       - db-postgres
 
@@ -26,6 +27,7 @@ services:
       - "traefik.http.routers.nodenames.rule=Host(`nodenames.localhost`)"
       - "traefik.http.routers.nodenames.entrypoints=web"
       - "traefik.http.services.nodenames.loadbalancer.server.port=5000"
+      - "traefik.http.routers.nodenames.service=nodenames"
     deploy:
       mode: replicated
       replicas: 2

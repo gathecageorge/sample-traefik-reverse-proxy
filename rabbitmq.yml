@@ -12,3 +12,4 @@ services:
       - "traefik.http.routers.rabbitmq.rule=Host(`rabbitmq.localhost`)"
       - "traefik.http.routers.rabbitmq.entrypoints=web"
       - "traefik.http.services.rabbitmq.loadbalancer.server.port=15672"
+      - "traefik.http.routers.rabbitmq.service=rabbitmq"

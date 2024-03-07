@@ -19,3 +19,4 @@ services:
       - "traefik.http.routers.phpmyadmin.rule=Host(`phpmyadmin.localhost`)"
       - "traefik.http.routers.phpmyadmin.entrypoints=web"
       - "traefik.http.services.phpmyadmin.loadbalancer.server.port=80"
+      - "traefik.http.routers.phpmyadmin.service=phpmyadmin"
