@@ -3,6 +3,7 @@ version: "3.9"
 services:
   nginx:
     image: nginx
+    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nginx.rule=Host(`nginx.localhost`)"

@@ -3,6 +3,7 @@ version: "3.9"
 services:
   traefik:
     image: traefik:latest
+    restart: unless-stopped
     command:
       - "--log.level=DEBUG"
       - "--api.insecure=true"
