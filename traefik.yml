@@ -12,9 +12,21 @@ services:
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--api"
+      - "--providers.docker.swarmMode=true"
+      - "--providers.docker.network=traefik_default"
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
+    networks:
+      - default
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: ["node.role == manager"]
+
+networks:
+  default:
