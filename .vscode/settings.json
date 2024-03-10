@@ -1,5 +1,8 @@
 {
   "yaml.schemas": {
-    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "file:///workspaces/sample-traefik-reverse-proxy/traefik.yml"
+    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
+      "file:///workspaces/sample-traefik-reverse-proxy/traefik.yml",
+      "vscode-vfs://github%2B7b2276223a312c22726566223a7b2274797065223a362c226964223a226d61696e227d7d/gathecageorge/sample-traefik-reverse-proxy/traefik.yml"
+    ]
   }
 }
